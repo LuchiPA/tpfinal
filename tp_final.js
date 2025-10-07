@@ -1,4 +1,4 @@
-let imagenes = [];
+let imagenes = []; // hola!!!
 let click = 0;
 let texto =[];
 
