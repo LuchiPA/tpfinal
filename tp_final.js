@@ -16,12 +16,12 @@ function preload() {
 
 function setup() {
   createCanvas(640, 480);
-posXBoton = width / 6;
-posYBoton = height - height / 3;
-posXBoton2 = width - width / 3;
-posYBoton2 = height - height / 3;
-tamBoton = 50;
-for (let i=0; i<23; i++) {
+  tamBoton = 50;
+  posXBoton = width / 2 - (tamBoton * 1.5);
+  posYBoton = height - 150;
+  posXBoton2 = posXBoton;
+  posYBoton2 = posYBoton + tamBoton + 20;
+  for (let i=0; i<23; i++) {
     textSize (25);
     texto [0]='La Sabana';
     texto [1]='Este es el hogar de los Hadley, una familia acomodada que se ha mudado recientmente a esta casa automatizada. La familia esta compuesta del George Hadley, su esposa  Lydia, y sus hijos, Peter y Wendy.';
@@ -42,29 +42,35 @@ for (let i=0; i<23; i++) {
     texto [16]='George y Lydia empacan para irse a Iowa de vacaciones con los niños, los cuales cedieron luego de un poco de oposición de su parte.';
     texto [17]='Fue entonces cuando Lydia y George escucharon los gritos de sus hijos desde el cuarto de juego. ¡Mama! ¡Papa! ¡Vengan!';
     texto [18]='Al llegar al cuarto, los niños encierran a George y a Lydia, dejandolos contra los leones. -¡Déjenos salir, niños!';
-    texto [22]='Creditos: Lucas Ortega y Luciano Pratti Addiechi';
+    texto [22]='Creditos: Lucas Ortega y Luciano';
   }
 }
 
 function draw() {
   background(0);
   image(imagenes[click], 0, 0, 640, 480);
-  if (click == 0) {
-    fill(255);
-  } else if (click != 19 && click != 20 && click != 21 && click != 22) {
-    fill(0,0,0,90);
-    rect(-12, 280, 660, 200, 20);
-    fill(255);
-    textSize(22);
-    textAlign(LEFT, TOP);
-    text(texto[click], 40, 300, 560, 200);
+if (click == 0) {
+  fill(0, 0, 0, 90);
+  rect(posXBoton, posYBoton, tamBoton * 3, tamBoton, 10);
+  rect(posXBoton2, posYBoton2, tamBoton * 3, tamBoton, 10);
+  fill (255);
+  textSize (20);
+  textAlign (CENTER, CENTER);
+  text("Inicio", posXBoton + (tamBoton * 1.5), posYBoton + tamBoton / 2);
+  text("Créditos", posXBoton2 + (tamBoton * 1.5), posYBoton2 + tamBoton / 2);
+} else if (click != 19 && click != 20 && click != 21 && click != 22) {
+  fill(0, 0, 0, 90);
+  rect(-12, 280, 660, 200, 20);
+  fill(255);
+  textSize(22);
+  textAlign(LEFT, TOP);
+  text(texto[click], 40, 300, 560, 200);
 }
 }
-
 function mousePressed () {
   if (click<imagenes.length-1) {
     click++;
   } else {
     click=0;
-  }
+}
 }
