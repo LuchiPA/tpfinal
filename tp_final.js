@@ -42,7 +42,7 @@ function setup() {
     texto [16]='George y Lydia empacan para irse a Iowa de vacaciones con los niños, los cuales cedieron luego de un poco de oposición de su parte.';
     texto [17]='Fue entonces cuando Lydia y George escucharon los gritos de sus hijos desde el cuarto de juego. ¡Mama! ¡Papa! ¡Vengan!';
     texto [18]='Al llegar al cuarto, los niños encierran a George y a Lydia, dejandolos contra los leones. -¡Déjenos salir, niños!';
-    texto [22]='Creditos: Lucas Ortega y Luciano';
+    texto [22]='Creditos: Lucas Ortega y Luciano Pratti Addiechi';
   }
 }
 
