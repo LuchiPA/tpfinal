@@ -1,12 +1,15 @@
 let imagenes = [];
 let click = 0;
 let texto =[];
-let posXBoton;
-let posYBoton;
-let tamBoton;
-let posXBoton2;
-let posYBoton2;
-
+let posXBotonInicial;//Estos son los botones que hacen arrancar el juego
+let posYBotonInicial;//Estos son los botones que hacen arrancar el juego
+let tamBoton; //Este es el boton del tamaño que yo renombre mal :P
+let posXBoton2Creditos;//Estos son los botones que llevan a los creditos
+let posYBoton2Creditos; //Estos son los botones que llevan a los creditos
+let posXBoton;  //Estos son los botones de decisión
+let posYBoton; //Estos son los botones de decisión
+let posXBoton2; //Estos son los botones de decisión
+let posYBoton2; //Estos son los botones de decisión
 
 function preload() {
   for (let i = 0; i < 23; i++) {
@@ -17,10 +20,15 @@ function preload() {
 function setup() {
   createCanvas(640, 480);
   tamBoton = 50;
-  posXBoton = width / 2 - (tamBoton * 1.5);
-  posYBoton = height - 150;
-  posXBoton2 = posXBoton;
-  posYBoton2 = posYBoton + tamBoton + 20;
+  posXBotonInicial = width / 2 - (tamBoton * 1.5);
+  posYBotonInicial = height - 150;
+  posXBoton2Creditos = posXBotonInicial;
+  posYBoton2Creditos = posYBotonInicial + tamBoton + 20;
+ posXBoton =width / 6;
+ posYBoton =height - height / 3 + 70;
+ posXBoton2 = width - width / 3;
+ posYBoton2 =height - height / 3 + 70;
+ tamBoton = 50;
   for (let i=0; i<23; i++) {
     textSize (25);
     texto [0]='La Sabana';
@@ -42,7 +50,7 @@ function setup() {
     texto [16]='George y Lydia empacan para irse a Iowa de vacaciones con los niños, los cuales cedieron luego de un poco de oposición de su parte.';
     texto [17]='Fue entonces cuando Lydia y George escucharon los gritos de sus hijos desde el cuarto de juego. ¡Mama! ¡Papa! ¡Vengan!';
     texto [18]='Al llegar al cuarto, los niños encierran a George y a Lydia, dejandolos contra los leones. -¡Déjenos salir, niños!';
-    texto [22]='Creditos: Lucas Ortega y Luciano Pratti Addiechi';
+    texto [22]='Creditos: Lucas Ortega y Luciano';
   }
 }
 
@@ -51,26 +59,136 @@ function draw() {
   image(imagenes[click], 0, 0, 640, 480);
 if (click == 0) {
   fill(0, 0, 0, 90);
-  rect(posXBoton, posYBoton, tamBoton * 3, tamBoton, 10);
-  rect(posXBoton2, posYBoton2, tamBoton * 3, tamBoton, 10);
+  rect(posXBotonInicial, posYBotonInicial, tamBoton * 3, tamBoton, 10);
+  rect(posXBoton2Creditos, posYBoton2Creditos, tamBoton * 3, tamBoton, 10);
   fill (255);
   textSize (20);
   textAlign (CENTER, CENTER);
-  text("Inicio", posXBoton + (tamBoton * 1.5), posYBoton + tamBoton / 2);
-  text("Créditos", posXBoton2 + (tamBoton * 1.5), posYBoton2 + tamBoton / 2);
-} else if (click != 19 && click != 20 && click != 21 && click != 22) {
-  fill(0, 0, 0, 90);
-  rect(-12, 280, 660, 200, 20);
-  fill(255);
-  textSize(22);
-  textAlign(LEFT, TOP);
-  text(texto[click], 40, 300, 560, 200);
+  text("Inicio", posXBotonInicial + (tamBoton * 1.5), posYBotonInicial + tamBoton / 2);
+  text("Créditos", posXBoton2Creditos + (tamBoton * 1.5), posYBoton2Creditos + tamBoton / 2);
+} 
+  else if (click == 1) {
+    fill(0, 0, 0, 90);
+    rect(-12, 310, 660, 200, 20); //Acá moví el rect un poco mas abajo
+    fill(255);
+    textSize(22);
+    textAlign(LEFT, TOP);
+    text(texto[click], 40, 330, 560, 200); //esto mueve el texto un poco mas abajo 
+  }
+//Este else if hace que las otra imagenes de dibujen normalmente
+  else if (click != 19 && click != 20 && click != 21 && click != 22) {
+    fill(0, 0, 0, 90);
+    rect(-12, 280, 660, 200, 20);
+    fill(255);
+    textSize(22);
+    textAlign(LEFT, TOP);
+    text(texto[click], 40, 300, 560, 200);
+}
+if (click == 0) {
+    // Botones de inicio y créditos
+    fill(0, 0, 0, 90);
+    rect(posXBotonInicial, posYBotonInicial, tamBoton * 3, tamBoton, 10);
+    rect(posXBoton2Creditos, posYBoton2Creditos, tamBoton * 3, tamBoton, 10);
+
+    fill(255);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Inicio", posXBotonInicial + (tamBoton * 1.5), posYBotonInicial + tamBoton / 2);
+    text("Créditos", posXBoton2Creditos + (tamBoton * 1.5), posYBoton2Creditos + tamBoton / 2);
+  }
+
+  if (click == 3) {
+    // Botones de decisión
+    fill(0, 0, 0, 120);
+    rect(posXBoton - 50, posYBoton, tamBoton * 4, tamBoton, 10);
+    rect(posXBoton2 - 50, posYBoton2, tamBoton * 4, tamBoton, 10);
+    
+    fill (255);
+    textSize (19);
+    textAlign (CENTER, CENTER);
+    text ("Ir a investigar", posXBoton + (tamBoton), posYBoton + (tamBoton / 2));
+    text ("Ignorar el problema", posXBoton2 + (tamBoton), posYBoton2 + (tamBoton / 2));
+}
+if (click == 9){
+     fill(0, 0, 0, 120);
+    rect(posXBoton - 50, posYBoton, tamBoton * 4, tamBoton, 10);
+    rect(posXBoton2 - 50, posYBoton2, tamBoton * 4, tamBoton, 10);
+    
+    fill (255);
+    textSize (19);
+    textAlign (CENTER, CENTER);
+    text ("Ignorar el problema", posXBoton + (tamBoton), posYBoton + (tamBoton / 2));
+    text ("Llamar a McClean", posXBoton2 + (tamBoton), posYBoton2 + (tamBoton / 2)); 
 }
 }
 function mousePressed () {
-  if (click<imagenes.length-1) {
-    click++;
+  if (click == 0) {  
+    // BOTONES DE MENÚ INICIAL
+    if (
+      mouseX > posXBotonInicial &&
+      mouseX < posXBotonInicial + tamBoton * 3 &&
+      mouseY > posYBotonInicial &&
+      mouseY < posYBotonInicial + tamBoton
+    ) {
+      click = 1;  // Ir a la imagen uno
+    }
+
+    if (
+      mouseX > posXBoton2Creditos &&
+      mouseX < posXBoton2Creditos + tamBoton * 3 &&
+      mouseY > posYBoton2Creditos &&
+      mouseY < posYBoton2Creditos + tamBoton
+    ) {
+      click = 22; // Ir a créditos
+    }
+
+  } else if (click == 3) {
+    //BOTONES DE DECISIÓN EN IMAGEN 3
+    // Botón 1: Ir a investigar lleva a la imagen 4
+    if (
+      mouseX > posXBoton - 50 &&
+      mouseX < posXBoton - 50 + tamBoton * 4 &&
+      mouseY > posYBoton &&
+      mouseY < posYBoton + tamBoton
+    ) {
+      click = 9;
+    }
+
+    // Botón 2: Ignorar el problema lleva a la imagen 10
+    if (
+      mouseX > posXBoton2 - 50 &&
+      mouseX < posXBoton2 - 50 + tamBoton * 4 &&
+      mouseY > posYBoton2 &&
+      mouseY < posYBoton2 + tamBoton
+    ) {
+      click = 4;
+    }
+} else if (click == 9) {
+    //BOTONES DE DECISIÓN EN IMAGEN 9
+    // Botón 1: Ignorar el problema a la imagen 6
+    if (
+      mouseX > posXBoton - 50 &&
+      mouseX < posXBoton - 50 + tamBoton * 4 &&
+      mouseY > posYBoton &&
+      mouseY < posYBoton + tamBoton
+    ) {
+      click = 6;
+    }
+
+    // Botón 2: Llamara a McClean a la imagen 10 
+    if (
+      mouseX > posXBoton2 - 50 &&
+      mouseX < posXBoton2 - 50 + tamBoton * 4 &&
+      mouseY > posYBoton2 &&
+      mouseY < posYBoton2 + tamBoton
+    ) {
+      click = 10;
+    }
   } else {
-    click=0;
-}
+    if (click < imagenes.length - 1) {
+      click++;
+    } else {
+      click = 0;
+    }
+  }
 }
