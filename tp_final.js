@@ -1,15 +1,15 @@
 let imagenes = [];
 let click = 0;
 let texto =[];
-let posXBotonInicial;//Estos son los botones que hacen arrancar el juego
-let posYBotonInicial;//Estos son los botones que hacen arrancar el juego
-let tamBoton; //Este es el boton del tamaño que yo renombre mal :P
-let posXBoton2Creditos;//Estos son los botones que llevan a los creditos
-let posYBoton2Creditos; //Estos son los botones que llevan a los creditos
-let posXBoton;  //Estos son los botones de decisión
-let posYBoton; //Estos son los botones de decisión
-let posXBoton2; //Estos son los botones de decisión
-let posYBoton2; //Estos son los botones de decisión
+let posXBotonInicial;//Botones de arranque
+let posYBotonInicial;//Botones de arranque
+let tamBoton; //
+let posXBoton2Creditos;//boton de creditos
+let posYBoton2Creditos; //boton de creditos
+let posXBoton;  // botones de decisión
+let posYBoton; // botones de decisión
+let posXBoton2; // botones de decisión
+let posYBoton2; // botones de decisión
 let pradera, soundboton, rugidoleon;
 
 
@@ -72,14 +72,14 @@ function draw() {
     text("Créditos", posXBoton2Creditos + (tamBoton * 1.5), posYBoton2Creditos + tamBoton / 2);
   } else if (click == 1) {
     fill(0, 0, 0, 90);
-    rect(-12, 310, 660, 200, 20); //Acá moví el rect un poco mas abajo
+    rect(-12, 310, 660, 200, 20); //mas abajo
     fill(255);
     textSize(22);
     textAlign(LEFT, TOP);
-    text(texto[click], 40, 330, 560, 200); //esto mueve el texto un poco mas abajo
+    text(texto[click], 40, 330, 560, 200); // mas abajo
   }
 
-  //Este else if hace que las otra imagenes de dibujen normalmente
+
   else if (click != 19 && click != 20 && click != 21 && click != 22) {
     fill(0, 0, 0, 90);
     rect(-12, 280, 660, 200, 20);
@@ -175,14 +175,14 @@ function draw() {
 function mousePressed() {
 
   if (click == 0) {
-    // --- MENÚ INICIAL ---
+    //MENÚ 
     if (
       mouseX > posXBotonInicial &&
       mouseX < posXBotonInicial + tamBoton * 3 &&
       mouseY > posYBotonInicial &&
       mouseY < posYBotonInicial + tamBoton
       ) {
-      click = 1;  // Ir a la imagen uno
+      click = 1;  // Ir a imagen uno
       boton.play();
     }
 
@@ -196,7 +196,7 @@ function mousePressed() {
       boton.play();
     }
   } else if (click == 3) {
-    // --- DECISIÓN EN IMAGEN 3 ---
+    // DECISIÓN EN IMAGEN 3 
     if (
       mouseX > posXBoton - 50 &&
       mouseX < posXBoton - 50 + tamBoton * 4 &&
@@ -217,7 +217,7 @@ function mousePressed() {
       boton.play();
     }
   } else if (click == 9) {
-    // --- DECISIÓN EN IMAGEN 9 ---
+    // DECISIÓN EN IMAGEN 9 
     if (
       mouseX > posXBoton - 50 &&
       mouseX < posXBoton - 50 + tamBoton * 4 &&
@@ -238,7 +238,7 @@ function mousePressed() {
       boton.play();
     }
   } else if (click == 11) {
-    // --- DECISIÓN EN IMAGEN 11 ---
+    //  desicon en imagen 11 
     if (
       mouseX > posXBoton - 50 &&
       mouseX < posXBoton - 50 + tamBoton * 4 &&
@@ -259,7 +259,7 @@ function mousePressed() {
       boton.play();
     }
   } else if (click == 14) {
-    // --- DECISIÓN EN IMAGEN 14 ---
+    // decision en imagen 14
     if (
       mouseX > posXBoton - 50 &&
       mouseX < posXBoton - 50 + tamBoton * 4 &&
@@ -280,7 +280,7 @@ function mousePressed() {
       boton.play();
     }
   } else if (click == 5) {
-    // --- DECISIÓN EN IMAGEN 5 ---
+    // decision en imgen 5
     if (
       mouseX > posXBoton - 50 &&
       mouseX < posXBoton - 50 + tamBoton * 4 &&
