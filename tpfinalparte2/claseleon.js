@@ -38,3 +38,5 @@ hitBox (jugador) {
     return colisionX && colisionY;
   }
 }
+//por ahora no logré que se dibuje, solo esta el codigo (perdón)
+
