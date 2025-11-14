@@ -2,16 +2,19 @@ class Juego {
   constructor() {
     this.jugador = new Jugador (60,100,0.9,18);
     this.obstaculos = [];
-
+    this.leon = new Leon(680, 320); //ESTO ES DE LEON
 }
   mostrar() {
     fill(100, 200, 100);
     rect(0, 380, width, 100);
     this.jugador.dibujarJ();
     this.jugador.mover();
+    this.leon.mover();//ESTO ES DE LEON
+    this.leon.dibujar();//ESTO ES DE LEON
     if (keyIsDown(RIGHT_ARROW)) {
       if (this.obstaculos.length === 0 || this.obstaculos[this.obstaculos.length - 1].x < width - random(260,600)){
       this.crearObstaculo();
+          
   }
  }
  for (let i = 0;i < this.obstaculos.length; i++) {
