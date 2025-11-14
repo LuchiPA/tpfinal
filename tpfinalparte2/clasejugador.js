@@ -3,10 +3,10 @@ class Jugador {
     this.x= 240;
     this.y= 380 - alto;
     this.tam= ancho;
-    this.alto= alto;
+    this.alto = alto;
     this.altoOriginal= alto;
     this.velY= 0;
-    this.salto= salto; //fuerza de salto
+    this.salto = salto; //fuerza de salto
     this.gravedad = gravedad;
     this.enTierra = true;
     this.piso = 380;

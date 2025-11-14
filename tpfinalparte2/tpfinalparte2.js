@@ -1,9 +1,14 @@
 let juego; 
-
+let imgMenu;
+let imgPiedra;
+function preload() {
+  imgMenu = loadImage("img/Imagen0.png");
+  imgPiedra = loadImage("img/piedra.png");
+}
 
 function setup() {
 createCanvas(640,480);
-juego = new Juego
+juego = new Juego (imgMenu);
 }
 
 
@@ -11,11 +16,3 @@ function draw() {
  background (255,100,10);
  juego.mostrar();
 }   
-
-
-//falta esto:
-//leon,seguir jugador
-//colision con leon
-//imagen y sonido
-//perder al colisionar con leon
-//ganar al llegar a la puerta (por tiempo o por puntos conseguidos),no hice la puerta todavia 
