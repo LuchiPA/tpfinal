@@ -1,42 +1,16 @@
-class Leon{
-constructor(x, y) {
-  this.x = 240;
-  this.y = 380;
-  this.anchoL = 50;
-  this.altoL = 50;
-  this.velL= 2;
-  this.colorL = color (150);
-   
-      
-}    
-       
-dibujarL() {
-  fill(this.color);
-  rect(this.x, this.y, this.ancho, this.alto);
+class Leon {
+ constructor(x, y) {
+this.x = x;
+this.y = y;
+this.velocidad = 2; 
+this.ancho = 40;
+this.alto = 60;
 }
-
 mover() {
-  this.x -= this.velocidad;
-  if (this.x + this.ancho < 0) {
-    this.x = width + random(200, 400);
+    this.x += this.velocidad;
+}
+dibujar() {
+fill(150); // gris
+rect(this.x, this.y, this.ancho, this.alto);
   }
 }
-hitBox (jugador) {
-    let jugadorX = jugador.x;
-    let jugadorY = jugador.y;
-    let jugadorAncho = jugador.tam;
-    let jugadorAlto = jugador.alto;
-    let margen = 5;
-
-    let colisionX =
-      jugadorX + jugadorAncho > this.x + margen &&
-      jugadorX < this.x + this.ancho - margen;
-    let colisionY =
-      jugadorY + jugadorAlto > this.y + margen &&
-      jugadorY < this.y + this.alto - margen;
-
-    return colisionX && colisionY;
-  }
-}
-//por ahora no logré que se dibuje, solo esta el codigo (perdón)
-
