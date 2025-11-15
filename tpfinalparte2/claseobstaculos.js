@@ -7,6 +7,7 @@ class Obstaculos {
     this.velocidad = velocidad
     this.tipoObs = tipoObs;
     this.img = img;
+    this.obsPasado = false
   }
 
   dibujarO() {

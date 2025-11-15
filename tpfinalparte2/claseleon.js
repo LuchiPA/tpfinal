@@ -6,18 +6,17 @@ class Leon {
     //posicion de inicio
     this.x = 20;
     this.y = 380;
-
     //tamaño
     this.ancho = 100
       this.alto = 50
-
       //velocidad
       this.velocidad = 2;
-
     this.gravedad = 0.6;
     this.velY = 0;
     this.salto = -16;
     this.enTierra = true
+    this.jugadorFrena = 0
+    this.velExtra = 1.5;
   }
   dibujar() {
     fill(255, 190, 100); // naranja claro
@@ -28,10 +27,20 @@ class Leon {
     let distancia = 100;
     let cenaLeon = this.jugador.x - distancia;
 
-    if (this.x + this.ancho < cenaLeon) {
-      this.x += this.velocidad;
+    if (keyIsDown(RIGHT_ARROW)) {
+  this.jugadorFrena = 0; // resetear contador
+  if (this.x + this.ancho < cenaLeon) {
+    this.x += this.velocidad;
+  }
+} else {
+  // jugador está quieto
+  this.jugadorFrena++;
+   if (this.jugadorFrena > 120) {
+    if (this.x + this.ancho < this.jugador.x) {
+      this.x += this.velocidad + this.velExtra;
     }
-
+  }
+}
     //leon salta obstaculos
     for (let i = 0; i < this.obstaculos.length; i++) {
       let obs = this.obstaculos[i];
