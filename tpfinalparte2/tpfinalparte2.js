@@ -11,12 +11,13 @@ let imgPiedra;
 let imgArbusto;
 let imgTronco;
 let imgPuerta;
+let imgBoton;
 function preload() {
   imgMenu = loadImage("img/Imagen0.png");
   imgInstrucciones = loadImage("img/fondo.png");
   imgPradera = loadImage("img/fondo.png");
   imgPerder = loadImage("img/perder.png");
-  imgGanar = loadImage("img/Imagen0.png");
+  imgGanar = loadImage("img/ganar.png");
   imgCreditos = loadImage("img/creditos.png")
   imgPasto= loadImage("img/pasto.png")
   imgPajaro = loadImage("img/pajaro.png")
@@ -24,6 +25,7 @@ function preload() {
   imgArbusto = loadImage("img/arbusto.png")
   imgTronco = loadImage("img/tronco.png")
   imgPuerta = loadImage("img/puerta1.webp")
+  imgBoton = loadImage("img/boton.png")
 }
 
 function setup() {

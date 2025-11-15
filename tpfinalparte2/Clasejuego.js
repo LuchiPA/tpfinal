@@ -112,14 +112,14 @@ pantallaPerder() {
     background(0);
  }
  fill(255, 0, 0);
-    textSize(80);
+    textSize(60);
     textAlign(CENTER, CENTER);
-    text("¡Perdiste!", width / 2, height / 2 - 50);
+    text("Fuiste cena del leon", width / 2, height / 2 - 50);
     
     //boton menu
     let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
-    fill(0, 200, 100);
-    rect(botonMenu.x, botonMenu.y, botonMenu.ancho, botonMenu.alto, 15);
+    
+    image(imgBoton,botonMenu.x -30, botonMenu.y - 75, 260,200);
     fill(255);
     textSize(20);
     textAlign(CENTER, CENTER);
@@ -127,8 +127,7 @@ pantallaPerder() {
 
     //boton instrucciones
     let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
-    fill(0, 150, 200);
-    rect(botonInstrucciones.x, botonInstrucciones.y, botonInstrucciones.ancho, botonInstrucciones.alto, 15);
+    image(imgBoton,botonInstrucciones.x -30, botonInstrucciones.y -72,260,200);
     fill(255);
     textSize(20);
     textAlign(CENTER,CENTER);
@@ -154,14 +153,13 @@ pantallaGanar() {
     background(0);
  }
  fill(255, 0, 0);
-    textSize(80);
+    textSize(60);
     textAlign(CENTER, CENTER);
-    text("¡Ganaste!", width / 2, height / 2 - 50);
+    text("Escapaste del leon", width / 2, height / 2 - 50);
     
     //boton menu
     let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
-    fill(0, 200, 100);
-    rect(botonMenu.x, botonMenu.y, botonMenu.ancho, botonMenu.alto, 15);
+      image(imgBoton,botonMenu.x -30, botonMenu.y - 75, 260,200);
     fill(255);
     textSize(20);
     textAlign(CENTER, CENTER);
@@ -169,8 +167,7 @@ pantallaGanar() {
 
     //boton instrucciones
     let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
-    fill(0, 150, 200);
-    rect(botonInstrucciones.x, botonInstrucciones.y, botonInstrucciones.ancho, botonInstrucciones.alto, 15);
+    image(imgBoton,botonInstrucciones.x -30, botonInstrucciones.y -72,260,200);
     fill(255);
     textSize(20);
     textAlign(CENTER,CENTER);
@@ -195,8 +192,8 @@ mostrarMenu() {
   image(this.imgMenu, 0, 0, width, height);
  
   // botón
-  fill(0, 200, 100);
-  rect(this.botonInicio.x, this.botonInicio.y, this.botonInicio.ancho, this.botonInicio.alto, 15);
+  
+  image(imgBoton,this.botonInicio.x -19, this.botonInicio.y -72, 190,190);
   fill(255);
   textSize(25);
   textAlign(CENTER, CENTER);
@@ -208,8 +205,8 @@ mostrarMenu() {
       this.estado = "instrucciones" // cambiar al estado de juego
     }
   }
-  fill(0, 200, 100);
-rect(this.botonInicio.x, this.botonInicio.y + 70, this.botonInicio.ancho, this.botonInicio.alto, 15);
+ 
+image(imgBoton,this.botonInicio.x -19, this.botonInicio.y +1,190,190);
 
 fill(255);
 textSize(25);
@@ -267,8 +264,8 @@ pantallaCreditos() {
   }
   // BOTÓN volver al menú
   let botonVolver = {x: width/2 - 100, y: height - 120, ancho: 200, alto: 60};
-  fill(0, 200, 100);
-  rect(botonVolver.x, botonVolver.y, botonVolver.ancho, botonVolver.alto, 15);
+ 
+  image(imgBoton,botonVolver.x +7, botonVolver.y -72,190,190);
 
   fill(255);
   textSize(20);
