@@ -19,8 +19,7 @@ class Leon {
     this.velExtra = 1.5;
   }
   dibujar() {
-    fill(255, 190, 100); // naranja claro
-    rect(this.x, this.y, this.ancho, this.alto);
+   image (imgLeon, this.x, this.y, this.ancho, this.alto);
   }
   seguirJugador() {
     //leon sigue al jugador

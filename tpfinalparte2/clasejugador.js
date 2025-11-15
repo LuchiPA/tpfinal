@@ -15,9 +15,7 @@ class Jugador {
 
 
   dibujarJ() {
-
-    fill(0)
-      rect(this.x, this.y, this.tam, this.alto);
+     image (imgHombre, this.x, this.y, this.tam, this.alto);
   }
 
   mover() {

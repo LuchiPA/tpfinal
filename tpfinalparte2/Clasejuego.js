@@ -18,7 +18,10 @@ class Juego {
   this.leon = new Leon(this.jugador, this.obstaculos);
   this.puerta = new Puerta(this.jugador, 5);
   this.puntos = 0;  // contadora de obstáculos
-  this.puntosPuerta = 1;
+  this.puntosPuerta = 60;
+   this.fondo = fondo;
+    this.ganasteSound = ganaste;
+    this.rugidoSound = rugido;
 }
 mostrar() {
   if (this.estado === "menu") {
@@ -287,5 +290,38 @@ reiniciarJuego() {
     this.puerta = new Puerta(this.jugador, 5);
     this.puntos = 0;
 }
+musica() {
+  // Música de fondo durante el juego
+  if (this.estado === "jugando") {
+    if (!this.fondo.isPlaying()) {
+      this.fondo.loop();
+    }
+  } else {
+    if (this.fondo.isPlaying()) {
+      this.fondo.stop();
+    }
+  }
 
+  // Música de ganar
+  if (this.estado === "ganar") {
+    if (!this.ganasteSound.isPlaying()) {
+      this.ganasteSound.loop();
+    }
+  } else {
+    if (this.ganasteSound.isPlaying()) {
+      this.ganasteSound.stop();
+    }
+  }
+
+  // Sonido de perder
+  if (this.estado === "perder") {
+    if (!this.rugidoSound.isPlaying()) {
+      this.rugidoSound.loop();
+    }
+  } else {
+    if (this.rugidoSound.isPlaying()) {
+      this.rugidoSound.stop();
+    }
+  }
+}
 }
