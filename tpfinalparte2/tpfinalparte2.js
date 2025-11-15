@@ -12,7 +12,12 @@ let imgArbusto;
 let imgTronco;
 let imgPuerta;
 let imgBoton;
+let fondo, ganaste, rugido;
+
 function preload() {
+  fondo = loadSound ('sound/fondo.mp3');
+  ganaste = loadSound ('sound/ganaste.mp3');
+  rugido = loadSound ('sound/rugido.mp3');
   imgMenu = loadImage("img/Imagen0.png");
   imgInstrucciones = loadImage("img/fondo.png");
   imgPradera = loadImage("img/fondo.png");
@@ -37,4 +42,27 @@ juego = new Juego (imgMenu,imgInstrucciones);
 function draw() {
   background(0);
  juego.mostrar();
+ musica();
 }   
+
+
+function musica() {
+}
+if ((this. juego === true) && !fondo.isPlaying ()) {
+ fondo.loop ();
+}
+if ((this.juego === false) && !fondo.isPlaying ()) {
+ fondo.stop ();
+}
+if ((this.ganaste === true) && !ganaste.isPlaying ()){
+ganaste.loop ();
+}
+if ((this.ganaste === false) && !ganaste.isPlaying ()){
+  ganaste.stop ();
+}
+if ((imgPerder === true) && !rudigo.isPlaying ()){
+ rugido.loop ();
+}
+if ((imgPerder === false) && !rudigo.isPlaying ()){
+ rugido.stop ();
+}
