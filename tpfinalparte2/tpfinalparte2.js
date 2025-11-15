@@ -12,18 +12,24 @@ let imgArbusto;
 let imgTronco;
 let imgPuerta;
 let imgBoton;
-let fondo, ganaste, rugido;
+let imgHombre;
+let imgLeon;
+let fondo;
+let ganaste;
+let rugido;
 
 function preload() {
-  fondo = loadSound ('sound/fondo.mp3');
-  ganaste = loadSound ('sound/ganaste.mp3');
-  rugido = loadSound ('sound/rugido.mp3');
+  fondo = loadSound ("sound/fondo.mp3");
+  ganaste = loadSound ("sound/ganaste.mp3");
+  rugido = loadSound ("sound/rugido.mp3");
   imgMenu = loadImage("img/Imagen0.png");
   imgInstrucciones = loadImage("img/fondo.png");
   imgPradera = loadImage("img/fondo.png");
   imgPerder = loadImage("img/perder.png");
   imgGanar = loadImage("img/ganar.png");
   imgCreditos = loadImage("img/creditos.png")
+  imgHombre = loadImage("img/hombre.png")
+  imgLeon = loadImage("img/leon.png")
   imgPasto= loadImage("img/pasto.png")
   imgPajaro = loadImage("img/pajaro.png")
   imgPiedra = loadImage("img/piedra.png")
@@ -42,7 +48,7 @@ juego = new Juego (imgMenu,imgInstrucciones);
 function draw() {
   background(0);
  juego.mostrar();
-musica();
+ musica();
 }
 
 function musica() {
@@ -65,4 +71,3 @@ if ((imgPerder === true) && !rudigo.isPlaying ()){
 if ((imgPerder === false) && !rudigo.isPlaying ()){
  rugido.stop ();
 }
-
