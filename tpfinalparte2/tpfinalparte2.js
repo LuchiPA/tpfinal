@@ -6,6 +6,11 @@ let imgPerder;
 let imgGanar;
 let imgCreditos;
 let imgPasto;
+let imgPajaro;
+let imgPiedra;
+let imgArbusto;
+let imgTronco;
+let imgPuerta;
 function preload() {
   imgMenu = loadImage("img/Imagen0.png");
   imgInstrucciones = loadImage("img/fondo.png");
@@ -14,7 +19,11 @@ function preload() {
   imgGanar = loadImage("img/Imagen0.png");
   imgCreditos = loadImage("img/creditos.png")
   imgPasto= loadImage("img/pasto.png")
-  
+  imgPajaro = loadImage("img/pajaro.png")
+  imgPiedra = loadImage("img/piedra.png")
+  imgArbusto = loadImage("img/arbusto.png")
+  imgTronco = loadImage("img/tronco.png")
+  imgPuerta = loadImage("img/puerta1.webp")
 }
 
 function setup() {

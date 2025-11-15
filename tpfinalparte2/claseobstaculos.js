@@ -1,18 +1,26 @@
 class Obstaculos {
-  constructor(x, y, ancho, alto, velocidad, tipoObs,img = null) {
+  constructor(x, y, ancho, alto, velocidad, tipoObs, img = null) {
     this.x = x;
     this.y = y;
     this.alto = alto;
     this.ancho = ancho;
     this.velocidad = velocidad
-    this.tipoObs = tipoObs;
+      this.tipoObs = tipoObs;
     this.img = img;
     this.obsPasado = false
   }
 
   dibujarO() {
-    fill(150);
-    rect(this.x, this.y, this.ancho, this.alto);
+  
+    if (this.tipoObs === "arbusto") {
+      image(imgArbusto, this.x, this.y - 25 ,112,148);
+    } else if (this.tipoObs === "piedra") {
+      image(imgPiedra, this.x, this.y -20, 72, 108);
+    } else if (this.tipoObs === "pajaro") {
+      image(imgPajaro, this.x, this.y - 60, 90, 73);
+    } else if (this.tipoObs === "tronco") {
+      image(imgTronco, this.x, this.y - 25,280, 74);
+    }
   }
   mover() {
     this.x -= this.velocidad;
