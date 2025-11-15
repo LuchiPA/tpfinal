@@ -18,7 +18,7 @@ class Juego {
   this.leon = new Leon(this.jugador, this.obstaculos);
   this.puerta = new Puerta(this.jugador, 5);
   this.puntos = 0;  // contadora de obstáculos
-  this.puntosPuerta = 5;
+  this.puntosPuerta = 60;
 }
 mostrar() {
   if (this.estado === "menu") {
@@ -31,8 +31,7 @@ mostrar() {
       } 
     //suelo
     fill(100, 200, 100);
-    rect(0, 380, width, 100);
-    
+    image(imgPasto,0,315,width,100);
    
 
     //crear obstaculos

@@ -1,19 +1,20 @@
 let juego; 
 let imgMenu;
 let imgInstrucciones;
-let imgPiedra;
 let imgPradera;
 let imgPerder;
 let imgGanar;
 let imgCreditos;
+let imgPasto;
 function preload() {
   imgMenu = loadImage("img/Imagen0.png");
   imgInstrucciones = loadImage("img/fondo.png");
-  imgPiedra = loadImage("img/piedra.png");
   imgPradera = loadImage("img/fondo.png");
   imgPerder = loadImage("img/perder.png");
   imgGanar = loadImage("img/Imagen0.png");
   imgCreditos = loadImage("img/creditos.png")
+  imgPasto= loadImage("img/pasto.png")
+  
 }
 
 function setup() {
