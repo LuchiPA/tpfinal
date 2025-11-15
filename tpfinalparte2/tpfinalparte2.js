@@ -42,9 +42,8 @@ juego = new Juego (imgMenu,imgInstrucciones);
 function draw() {
   background(0);
  juego.mostrar();
- musica();
-}   
-
+musica();
+}
 
 function musica() {
 }
@@ -66,3 +65,4 @@ if ((imgPerder === true) && !rudigo.isPlaying ()){
 if ((imgPerder === false) && !rudigo.isPlaying ()){
  rugido.stop ();
 }
+
