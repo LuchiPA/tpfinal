@@ -6,18 +6,19 @@ class Juego {
     this.imgInstrucciones = imgInstrucciones;
     this.instrucciones = false;
     this.ganaste 
+    this.creditos = false
   this.botonInicio = {x:
   width/2 - 75, y:
   height/2 + 90, ancho:
   150, alto:
     60
-  };
+  }
   this.jugador = new Jugador (60, 100, 0.9, 18);
   this.obstaculos = [];
   this.leon = new Leon(this.jugador, this.obstaculos);
   this.puerta = new Puerta(this.jugador, 5);
   this.puntos = 0;  // contadora de obstáculos
-  this.puntosPuerta = 60;
+  this.puntosPuerta = 5;
 }
 mostrar() {
   if (this.estado === "menu") {
@@ -74,6 +75,13 @@ if (this.puerta.Colision()) {
     this.ganar();
 }
   }
+  else if (this.estado === "perder") {
+    this.pantallaPerder();
+} else if (this.estado == "ganar") {
+    this.pantallaGanar();
+} else if (this.estado === "creditos") {
+    this.pantallaCreditos();
+}
 }
 
 
@@ -94,29 +102,100 @@ crearObstaculo() {
   this.obstaculos.push(nuevo);
 }
 ganar(){
-    noLoop();
-    fill(0,255,0);
-    textSize(100);
-    textAlign(CENTER,CENTER);
-    text("Ganaste!", width/2, height/2);
-    this.estado = "ganaste";
+    this.estado = "ganar";
 }
 perder() {
-  noLoop();
-  fill(255, 0, 0);
-  textSize(100);
-  textAlign(CENTER, CENTER);
-  text("Perdiste", width / 2, height /2);
-  this.estado = "perdiste";
+  this.estado = "perder";
+}
+pantallaPerder() {
+ if (imgPerder) {
+    image(imgPerder,0,0,width,height);
+ } else {
+    background(0);
+ }
+ fill(255, 0, 0);
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    text("¡Perdiste!", width / 2, height / 2 - 50);
+    
+    //boton menu
+    let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
+    fill(0, 200, 100);
+    rect(botonMenu.x, botonMenu.y, botonMenu.ancho, botonMenu.alto, 15);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
+
+    //boton instrucciones
+    let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
+    fill(0, 150, 200);
+    rect(botonInstrucciones.x, botonInstrucciones.y, botonInstrucciones.ancho, botonInstrucciones.alto, 15);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER,CENTER);
+    text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+
+     if (mouseIsPressed) {
+        if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
+            mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
+            this.reiniciarJuego(); // reinicia todo el juego
+            this.estado = "menu";
+        }
+        if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
+            mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
+            this.reiniciarJuego(); 
+            this.estado = "instrucciones";
+        }
+    }
+}
+pantallaGanar() {
+ if (imgGanar) {
+    image(imgGanar,0,0,width,height);
+ } else {
+    background(0);
+ }
+ fill(255, 0, 0);
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    text("¡Ganaste!", width / 2, height / 2 - 50);
+    
+    //boton menu
+    let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
+    fill(0, 200, 100);
+    rect(botonMenu.x, botonMenu.y, botonMenu.ancho, botonMenu.alto, 15);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
+
+    //boton instrucciones
+    let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
+    fill(0, 150, 200);
+    rect(botonInstrucciones.x, botonInstrucciones.y, botonInstrucciones.ancho, botonInstrucciones.alto, 15);
+    fill(255);
+    textSize(20);
+    textAlign(CENTER,CENTER);
+    text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+
+     if (mouseIsPressed) {
+        if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
+            mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
+            this.reiniciarJuego(); // reinicia todo el juego
+            this.estado = "menu";
+        }
+        if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
+            mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
+            this.reiniciarJuego(); 
+            this.estado = "instrucciones";
+        }
+    }
 }
 
-
 mostrarMenu() {
-  if (this.imgMenu) {
-    image(this.imgMenu, 0, 0, width, height);
-  } else {
-    background(0);
-  }
+  background(0);
+  image(this.imgMenu, 0, 0, width, height);
+ 
   // botón
   fill(0, 200, 100);
   rect(this.botonInicio.x, this.botonInicio.y, this.botonInicio.ancho, this.botonInicio.alto, 15);
@@ -131,13 +210,30 @@ mostrarMenu() {
       this.estado = "instrucciones" // cambiar al estado de juego
     }
   }
+  fill(0, 200, 100);
+rect(this.botonInicio.x, this.botonInicio.y + 70, this.botonInicio.ancho, this.botonInicio.alto, 15);
+
+fill(255);
+textSize(25);
+textAlign(CENTER, CENTER);
+text("CRÉDITOS", this.botonInicio.x + this.botonInicio.ancho/2, this.botonInicio.y + 70 + this.botonInicio.alto/2);
+
+// CLICK
+if (mouseIsPressed) {
+  if (
+    mouseX > this.botonInicio.x &&
+    mouseX < this.botonInicio.x + this.botonInicio.ancho &&
+    mouseY > this.botonInicio.y + 90 &&
+    mouseY < this.botonInicio.y + 90 + this.botonInicio.alto
+  ) {
+    this.estado = "creditos";
+  }
+}
 }
 mostrarInstrucciones() {
-  if (this.imgInstrucciones) {
-    image(this.imgInstrucciones, 0, 0, width, height);
-  } else {
-    background(0);
-  }
+  background(0);
+  image(this.imgInstrucciones, 0, 0, width, height);
+
   let instrucciones = [
     "Instrucciones:",
     "- Evita los obstáculos",
@@ -165,6 +261,38 @@ mostrarInstrucciones() {
     this.estado = "jugando"; // ahora sí empezamos el juego
   }
 }
+pantallaCreditos() {
+  if (imgCreditos) {
+    image(imgCreditos, 0, 0, width, height);
+  } else {
+    background(0);
+  }
+  // BOTÓN volver al menú
+  let botonVolver = {x: width/2 - 100, y: height - 120, ancho: 200, alto: 60};
+  fill(0, 200, 100);
+  rect(botonVolver.x, botonVolver.y, botonVolver.ancho, botonVolver.alto, 15);
+
+  fill(255);
+  textSize(20);
+  text("Volver al menú", botonVolver.x + botonVolver.ancho/2, botonVolver.y + botonVolver.alto/2);
+
+  if (mouseIsPressed) {
+    if (
+      mouseX > botonVolver.x && mouseX < botonVolver.x + botonVolver.ancho &&
+      mouseY > botonVolver.y && mouseY < botonVolver.y + botonVolver.alto
+    ) {
+      this.estado = "menu";
+    }
+  }
+}
+reiniciarJuego() {
+    this.jugador = new Jugador(60, 100, 0.9, 18);
+    this.obstaculos = [];
+    this.leon = new Leon(this.jugador, this.obstaculos);
+    this.puerta = new Puerta(this.jugador, 5);
+    this.puntos = 0;
+}
+
 }
 
 
