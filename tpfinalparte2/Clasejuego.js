@@ -18,7 +18,7 @@ class Juego {
   this.leon = new Leon(this.jugador, this.obstaculos);
   this.puerta = new Puerta(this.jugador, 5);
   this.puntos = 0;  // contadora de obstáculos
-  this.puntosPuerta = 1;
+  this.puntosPuerta = 60;
 }
 mostrar() {
   if (this.estado === "menu") {
