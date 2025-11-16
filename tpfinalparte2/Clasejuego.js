@@ -1,27 +1,28 @@
 class Juego {
   constructor(imgMenu, imgInstrucciones) {
+    this.jugador = new Jugador (60, 100, 0.9, 18);
+    this.obstaculos = [];
+    this.leon = new Leon(this.jugador, this.obstaculos);
+    this.puerta = new Puerta(this.jugador, 5);
+    this.obstaculos = [];
     this.estado = "menu";
     this.menu = "menu";
     this.imgMenu = imgMenu;
     this.imgInstrucciones = imgInstrucciones;
     this.instrucciones = false;
-    this.ganaste 
-    this.creditos = false
-  this.botonInicio = {x:
+    this.ganaste
+      this.creditos = false
+    this.botonInicio = {x:
   width/2 - 75, y:
   height/2 + 90, ancho:
   150, alto:
     60
   }
-  this.jugador = new Jugador (60, 100, 0.9, 18);
-  this.obstaculos = [];
-  this.leon = new Leon(this.jugador, this.obstaculos);
-  this.puerta = new Puerta(this.jugador, 5);
   this.puntos = 0;  // contadora de obstáculos
   this.puntosPuerta = 60;
-   this.fondo = fondo;
-    this.ganasteSound = ganaste;
-    this.rugidoSound = rugido;
+  this.fondo = fondo;
+  this.ganasteSound = ganaste;
+  this.rugidoSound = rugido;
 }
 mostrar() {
   if (this.estado === "menu") {
@@ -30,11 +31,11 @@ mostrar() {
     this.mostrarInstrucciones();
   } else if (this.estado === "jugando") {
     if (imgPradera) {
-        image(imgPradera, 0, 0, width, height);
-      } 
+      image(imgPradera, 0, 0, width, height);
+    }
     //suelo
-    image(imgPasto,0,315,width,100);
-   
+    image(imgPasto, 0, 315, width, 100);
+
 
     //crear obstaculos
     if (keyIsDown(RIGHT_ARROW)) {
@@ -51,18 +52,18 @@ mostrar() {
         this.perder();
       }
       if (!obTemp.obsPasado && obTemp.x + obTemp.ancho < this.jugador.x && obTemp.tipoObs !== "tronco") {
-        obTemp.obsPasado = true;  // para no contarlo dos veces
-        this.puntos++;             // sumar un punto
+        obTemp.obsPasado = true;  
+        this.puntos++;             }
       }
+    
+    fill(255); 
+    textSize(25);
+    textAlign(LEFT, TOP);
+    text("Puntos: " + this.puntos, 20, 20);
+    if (this.puntos >= this.puntosPuerta) {
+      this.puerta.activar(); // hace que la puerta sea visible
     }
-      fill(255); // color blanco
-  textSize(25);
-  textAlign(LEFT, TOP);
-  text("Puntos: " + this.puntos, 20, 20);
-if (this.puntos >= this.puntosPuerta) {
-    this.puerta.activar(); // hace que la puerta sea visible
-}
-     //jugador y leon
+    //jugador y leon
     this.jugador.dibujarJ();
     this.jugador.mover();
     this.leon.seguirJugador();
@@ -70,19 +71,18 @@ if (this.puntos >= this.puntosPuerta) {
     if (this.leon.hitBox(this.jugador)) {
       this.perder();
     }
-// Mostrar la puerta y chequear colisión
-this.puerta.mostrar();
-if (this.puerta.Colision()) {
-    this.ganar();
-}
-  }
-  else if (this.estado === "perder") {
+    // Mostrar la puerta y chequear colisión
+    this.puerta.mostrar();
+    if (this.puerta.Colision()) {
+      this.ganar();
+    }
+  } else if (this.estado === "perder") {
     this.pantallaPerder();
-} else if (this.estado == "ganar") {
+  } else if (this.estado == "ganar") {
     this.pantallaGanar();
-} else if (this.estado === "creditos") {
+  } else if (this.estado === "creditos") {
     this.pantallaCreditos();
-}
+  }
 }
 
 
@@ -102,101 +102,114 @@ crearObstaculo() {
 
   this.obstaculos.push(nuevo);
 }
-ganar(){
-    this.estado = "ganar";
+ganar() {
+  this.estado = "ganar";
 }
 perder() {
   this.estado = "perder";
 }
 pantallaPerder() {
- if (imgPerder) {
-    image(imgPerder,0,0,width,height);
- } else {
+  if (imgPerder) {
+    image(imgPerder, 0, 0, width, height);
+  } else {
     background(0);
- }
- fill(255, 0, 0);
-    textSize(60);
-    textAlign(CENTER, CENTER);
-    text("Fuiste cena del leon", width / 2, height / 2 - 50);
-    
-    //boton menu
-    let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
-    
-    image(imgBoton,botonMenu.x -30, botonMenu.y - 75, 260,200);
-    fill(255);
-    textSize(20);
-    textAlign(CENTER, CENTER);
-    text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
+  }
+  fill(255, 0, 0);
+  textSize(60);
+  textAlign(CENTER, CENTER);
+  text("Fuiste cena del leon", width / 2, height / 2 - 50);
 
-    //boton instrucciones
-    let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
-    image(imgBoton,botonInstrucciones.x -30, botonInstrucciones.y -72,260,200);
-    fill(255);
-    textSize(20);
-    textAlign(CENTER,CENTER);
-    text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+  //boton menu
+let botonMenu = {x:
+width/2 - 100, y:
+height/2 + 50, ancho:
+200, alto:
+  60
+};
 
-     if (mouseIsPressed) {
-        if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
-            mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
-            this.reiniciarJuego(); // reinicia todo el juego
-            this.estado = "menu";
-        }
-        if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
-            mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
-            this.reiniciarJuego(); 
-            this.estado = "instrucciones";
-        }
-    }
+image(imgBoton, botonMenu.x -30, botonMenu.y - 75, 260, 200);
+fill(255);
+textSize(20);
+textAlign(CENTER, CENTER);
+text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
+
+//boton instrucciones
+let botonInstrucciones = {x:
+width/2 - 100, y:
+height/2 + 130, ancho:
+200, alto:
+60};
+image(imgBoton, botonInstrucciones.x -30, botonInstrucciones.y -72, 260, 200);
+fill(255);
+textSize(20);
+textAlign(CENTER, CENTER);
+text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+
+if (mouseIsPressed) {
+  if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
+    mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
+    this.reiniciarJuego(); // reinicia todo el juego
+    this.estado = "menu";
+  }
+  if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
+    mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
+    this.reiniciarJuego();
+    this.estado = "instrucciones";
+  }
+}
 }
 pantallaGanar() {
- if (imgGanar) {
-    image(imgGanar,0,0,width,height);
- } else {
+  if (imgGanar) {
+    image(imgGanar, 0, 0, width, height);
+  } else {
     background(0);
- }
- fill(255, 0, 0);
-    textSize(60);
-    textAlign(CENTER, CENTER);
-    text("Escapaste del leon", width / 2, height / 2 - 50);
-    
-    //boton menu
-    let botonMenu = {x: width/2 - 100, y: height/2 + 50, ancho: 200, alto: 60};
-      image(imgBoton,botonMenu.x -30, botonMenu.y - 75, 260,200);
-    fill(255);
-    textSize(20);
-    textAlign(CENTER, CENTER);
-    text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
+  }
+  fill(255, 0, 0);
+  textSize(60);
+  textAlign(CENTER, CENTER);
+  text("Escapaste del leon", width / 2, height / 2 - 50);
 
-    //boton instrucciones
-    let botonInstrucciones = {x: width/2 - 100, y: height/2 + 130, ancho: 200, alto: 60};
-    image(imgBoton,botonInstrucciones.x -30, botonInstrucciones.y -72,260,200);
-    fill(255);
-    textSize(20);
-    textAlign(CENTER,CENTER);
-    text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+  //boton menu
+let botonMenu = {x:
+width/2 - 100, y:
+height/2 + 50, ancho:
+200, alto:
+  60
+};
+image(imgBoton, botonMenu.x -30, botonMenu.y - 75, 260, 200);
+fill(255);
+textSize(20);
+textAlign(CENTER, CENTER);
+text("Volver al menú", botonMenu.x + botonMenu.ancho/2, botonMenu.y + botonMenu.alto/2);
 
-     if (mouseIsPressed) {
-        if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
-            mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
-            this.reiniciarJuego(); // reinicia todo el juego
-            this.estado = "menu";
-        }
-        if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
-            mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
-            this.reiniciarJuego(); 
-            this.estado = "instrucciones";
-        }
-    }
+//boton instrucciones
+let botonInstrucciones = {x:
+width/2 - 100, y:
+height/2 + 130, ancho:
+200, alto:
+60};
+image(imgBoton, botonInstrucciones.x -30, botonInstrucciones.y -72, 260, 200);
+fill(255);
+textSize(20);
+textAlign(CENTER, CENTER);
+text("Volver a instrucciones", botonInstrucciones.x + botonInstrucciones.ancho/2, botonInstrucciones.y + botonInstrucciones.alto/2);
+
+if (mouseIsPressed) {
+  if (mouseX > botonMenu.x && mouseX < botonMenu.x + botonMenu.ancho &&
+    mouseY > botonMenu.y && mouseY < botonMenu.y + botonMenu.alto) {
+    this.reiniciarJuego(); // reinicia todo el juego
+    this.estado = "menu";
+  }
+  if (mouseX > botonInstrucciones.x && mouseX < botonInstrucciones.x + botonInstrucciones.ancho &&
+    mouseY > botonInstrucciones.y && mouseY < botonInstrucciones.y + botonInstrucciones.alto) {
+    this.reiniciarJuego();
+    this.estado = "instrucciones";
+  }
+}
 }
 
-mostrarMenu() {
-  background(0);
-  image(this.imgMenu, 0, 0, width, height);
  
-  // botón
-  
-  image(imgBoton,this.botonInicio.x -19, this.botonInicio.y -72, 190,190);
+  image(imgBoton, this.botonInicio.x -19, this.botonInicio.y -72, 190, 190);
   fill(255);
   textSize(25);
   textAlign(CENTER, CENTER);
@@ -208,25 +221,25 @@ mostrarMenu() {
       this.estado = "instrucciones" // cambiar al estado de juego
     }
   }
- 
-image(imgBoton,this.botonInicio.x -19, this.botonInicio.y +1,190,190);
 
-fill(255);
-textSize(25);
-textAlign(CENTER, CENTER);
-text("CRÉDITOS", this.botonInicio.x + this.botonInicio.ancho/2, this.botonInicio.y + 70 + this.botonInicio.alto/2);
+  image(imgBoton, this.botonInicio.x -19, this.botonInicio.y +1, 190, 190);
 
-// CLICK
-if (mouseIsPressed) {
-  if (
-    mouseX > this.botonInicio.x &&
-    mouseX < this.botonInicio.x + this.botonInicio.ancho &&
-    mouseY > this.botonInicio.y + 90 &&
-    mouseY < this.botonInicio.y + 90 + this.botonInicio.alto
-  ) {
-    this.estado = "creditos";
+  fill(255);
+  textSize(25);
+  textAlign(CENTER, CENTER);
+  text("CRÉDITOS", this.botonInicio.x + this.botonInicio.ancho/2, this.botonInicio.y + 70 + this.botonInicio.alto/2);
+
+  // CLICK
+  if (mouseIsPressed) {
+    if (
+      mouseX > this.botonInicio.x &&
+      mouseX < this.botonInicio.x + this.botonInicio.ancho &&
+      mouseY > this.botonInicio.y + 90 &&
+      mouseY < this.botonInicio.y + 90 + this.botonInicio.alto
+      ) {
+      this.estado = "creditos";
+    }
   }
-}
 }
 mostrarInstrucciones() {
   background(0);
@@ -266,30 +279,29 @@ pantallaCreditos() {
     background(0);
   }
   // BOTÓN volver al menú
-  let botonVolver = {x: width/2 - 100, y: height - 120, ancho: 200, alto: 60};
- 
-  image(imgBoton,botonVolver.x +7, botonVolver.y -72,190,190);
+let botonVolver = {x:
+width/2 - 100, y:
+height - 120, ancho:
+200, alto:
+  60
+};
 
-  fill(255);
-  textSize(20);
-  text("Volver al menú", botonVolver.x + botonVolver.ancho/2, botonVolver.y + botonVolver.alto/2);
+image(imgBoton, botonVolver.x +7, botonVolver.y -72, 190, 190);
 
-  if (mouseIsPressed) {
-    if (
-      mouseX > botonVolver.x && mouseX < botonVolver.x + botonVolver.ancho &&
-      mouseY > botonVolver.y && mouseY < botonVolver.y + botonVolver.alto
+fill(255);
+textSize(20);
+text("Volver al menú", botonVolver.x + botonVolver.ancho/2, botonVolver.y + botonVolver.alto/2);
+
+if (mouseIsPressed) {
+  if (
+    mouseX > botonVolver.x && mouseX < botonVolver.x + botonVolver.ancho &&
+    mouseY > botonVolver.y && mouseY < botonVolver.y + botonVolver.alto
     ) {
-      this.estado = "menu";
-    }
+    this.estado = "menu";
   }
 }
-reiniciarJuego() {
-    this.jugador = new Jugador(60, 100, 0.9, 18);
-    this.obstaculos = [];
-    this.leon = new Leon(this.jugador, this.obstaculos);
-    this.puerta = new Puerta(this.jugador, 5);
-    this.puntos = 0;
 }
+ 
 musica() {
   // Música de fondo durante el juego
   if (this.estado === "jugando") {

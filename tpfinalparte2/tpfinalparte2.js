@@ -22,7 +22,7 @@ function preload() {
   fondo = loadSound ("sound/fondo.mp3");
   ganaste = loadSound ("sound/ganaste.mp3");
   rugido = loadSound ("sound/rugido.mp3");
-  imgMenu = loadImage("img/Imagen0.png");
+  imgMenu = loadImage("img/Imagen.jpeg");
   imgInstrucciones = loadImage("img/fondo.png");
   imgPradera = loadImage("img/fondo.png");
   imgPerder = loadImage("img/perder.png");

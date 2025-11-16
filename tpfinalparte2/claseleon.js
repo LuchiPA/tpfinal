@@ -2,13 +2,12 @@ class Leon {
   constructor(jugador, obstaculos) {
     this.jugador = jugador;
     this.obstaculos = obstaculos;
-
     //posicion de inicio
     this.x = 20;
     this.y = 380;
     //tamaño
-    this.ancho = 100
-      this.alto = 50
+    this.ancho = 100;
+      this.alto = 50;
       //velocidad
       this.velocidad = 2;
     this.gravedad = 0.6;
@@ -41,7 +40,7 @@ class Leon {
   }
 }
     //leon salta obstaculos
-    for (let i = 0; i < this.obstaculos.length; i++) {
+    for (let i = 0; i < this.obstaculos.length;i++) {
       let obs = this.obstaculos[i];
 
       //si es pajaro no salta
@@ -89,6 +88,6 @@ class Leon {
       this.x < jugador.x + jugador.tam &&
       this.y + this.alto > jugador.y &&
       this.y < jugador.y + jugador.alto
-      );
+      )
   }
 }
