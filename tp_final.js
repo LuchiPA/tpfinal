@@ -19,9 +19,9 @@ let pradera, boton, rugidoleon;
 
 
 function preload() {
-  pradera = loadSound('sound/pradera.mp3');
-  boton = loadSound('sound/boton.mp3');
-  rugidoleon = loadSound('sound/leon.mp3');
+  pradera = loadSound("sounds/pradera.mp3");
+  boton = loadSound("sounds/boton.mp3");
+  rugidoleon = loadSound("sounds/leon.mp3");
   for (let i = 0; i < 23; i++) {
     imagenes[i] = loadImage('img/imagen'+i+'.png');
   }
@@ -33,8 +33,8 @@ function setup() {
   posYBotonInicial = height - 150;
   posXBoton2Creditos = posXBotonInicial;
   posYBoton2Creditos = posYBotonInicial + tamBoton + 20;
-  posXbotonMover = height - height / 2 + 90; //boton para mover las pantallas jugables
-  posYbotonMover = width / 6;
+ posXbotonMover = width - width / 2 + 90;
+posYbotonMover = height / 6
   posXBoton =width / 6;
   posYBoton =height - height / 3 + 70;
   posXBoton2 = width - width / 3;
@@ -163,8 +163,12 @@ function draw() {
     text ("Llamar a McClean", posXBoton + (tamBoton), posYBoton + (tamBoton / 2) + 25);
     text ("No llamarlo", posXBoton2 + (tamBoton), posYBoton2 + (tamBoton / 2) + 25);
 }
-musica ()
-botonAvanzar ()
+musica(); 
+
+// Mostrar botón de avanzar solo si NO estamos en una pantalla de decisión
+if (![0,3, 5, 9, 11, 14].includes(click)) {
+  botonAvanzar();
+}
 }
 function mousePressed() {
 
@@ -275,7 +279,7 @@ function mostrarBotonMenu (){
     rect(posXBoton2Creditos, posYBoton2Creditos, tamBoton * 3, tamBoton, 10);
 }
 function musica () {
-    }
+    
   if ((click == 2 || click == 9 || click == 11 || click == 12 || click == 18 || click == 19) && !pradera.isPlaying()) {
     pradera.loop();
   }
@@ -288,8 +292,15 @@ function musica () {
   if (click != 19 && rugidoleon.isPlaying()) {
     rugidoleon.stop();
   }
+}
 function botonAvanzar (){
-fill (255); 
-noStroke (); 
-rect (posXbotonMover, posYbotonMover - TamBotonMover/ 2, tamBotonMover, tamBotonMover);
+  fill(0, 0, 0, 120);
+  noStroke();
+  rect(posXbotonMover, posYbotonMover, TamBotonMover * 4, TamBotonMover, 10); // ancho x4 igual que los otros botones
+
+  // Texto centrado
+  fill(255);
+  textSize(19);
+  textAlign(CENTER, CENTER);
+  text("Continuar", posXbotonMover + (TamBotonMover * 2), posYbotonMover + (TamBotonMover / 2));
 }
